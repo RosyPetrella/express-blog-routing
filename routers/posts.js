@@ -4,12 +4,14 @@ let posts = require("../immagini_e_posts/posts.js");
 
 // index
 router.get("/", (req, res) => {
-  res.send("Lista dei post");
+  // res.send("Lista dei post");
+  res.json(posts);
 });
 
 // Show
 router.get("/:id", (req, res) => {
-  res.send(`Mostra post con id ${req.params.id}`);
+  // res.send();
+  res.json({ testo: `Mostra post con id ${req.params.id}`, posts });
 });
 
 // create
