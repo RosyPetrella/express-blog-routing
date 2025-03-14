@@ -8,10 +8,13 @@ router.get("/", (req, res) => {
   res.json(posts);
 });
 
-// Show
-router.get("/:id", (req, res) => {
-  // res.send();
-  res.json({ testo: `Mostra post con id ${req.params.id}`, posts });
+router.get("/:slug", (req, res) => {
+  const postSlug = req.params.slug;
+  const post = posts.find((p) => p.slug === postSlug); //
+  if (!post) {
+    return res.status(404).json({ error: "Post non trovato" });
+  }
+  res.json(post);
 });
 
 // create
